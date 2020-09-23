@@ -7,17 +7,17 @@ body {
   font-family: 'Old Standard TT', serif;
 }
 
-.color-primary {
+.primary-color {
   background-color: #559944;
   border: none;
 }
 
-.color-primary:hover {
+.primary-color:hover {
   background-color: #668855;
   border: none;
 }
 
-.color-primary:focus {
+.primary-color:focus {
   box-shadow: none;
 }
 

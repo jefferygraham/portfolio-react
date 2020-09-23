@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Navigation from './Navigation';
-import Modal from './Modal';
 import Carousel from './Carousel';
 import ContactForm from './ContactForm';
 import DestinationList from './DestinationList';
@@ -13,7 +12,6 @@ function App() {
   return (
     <div>
       <Navigation />
-      <Modal />
       <Carousel />
       <ContactForm />
       <DestinationList />

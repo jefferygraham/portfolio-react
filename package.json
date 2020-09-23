@@ -11,7 +11,9 @@
     "react-dom": "^16.13.1",
     "react-popper": "1.3.6",
     "react-scripts": "3.4.3",
-    "reactstrap": "8.5.1"
+    "reactstrap": "8.5.1",
+    "typeface-old-standard-tt": "^0.0.71",
+    "typeface-rubik": "^0.0.72"
   },
   "scripts": {
     "start": "react-scripts start",
