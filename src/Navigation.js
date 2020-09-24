@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 import {
   Navbar,
@@ -7,15 +6,22 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink,
 } from 'reactstrap';
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
 
     this.state = {
       isModalOpen: false,
+      isNavOpen: false,
     };
   }
 
@@ -25,15 +31,18 @@ class Navigation extends Component {
     });
   }
 
+  toggleNav() {
+    this.setState({
+      isNavOpen: !this.state.isNavOpen,
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
         <Navbar color='light' light expand='lg' fixed='top'>
-          <NavbarBrand>
-            <a
-              className='navbar-brand ml-3 d-flex flex-row align-items-center'
-              href='#'
-            >
+          <NavbarBrand href='/'>
+            <a className='navbar-brand ml-3 d-flex flex-row align-items-center'>
               <img
                 src='/assets/images/travel-right-logo.svg'
                 width='65'
@@ -43,51 +52,39 @@ class Navigation extends Component {
               <h2 className='d-inline heading m-0 pl-2'>Travel Right</h2>
             </a>
           </NavbarBrand>
-          <Button
-            className='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#navbarContent'
-            aria-controls='navbarContent'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
-            <span className='navbar-toggler-icon'></span>
-          </Button>
-
-          <div
-            className='collapse navbar-collapse justify-content-end'
-            id='navbarContent'
-          >
-            <ul className='navbar-nav'>
-              <li className='nav-item active'>
-                <a className='nav-link' href='#'>
-                  Home <span className='sr-only'>(current)</span>
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#'>
-                  About
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#'>
-                  Services
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#'>
-                  Contact
-                </a>
-              </li>
-            </ul>
-            <Button
-              className='primary-color text-white my-2 my-sm-0 mx-lg-4'
-              onClick={this.toggleModal}
-            >
-              Book Now
-            </Button>
-          </div>
+          <NavbarToggler onClick={this.toggleNav} />
+          <Collapse isOpen={this.state.isNavOpen} navbar>
+            <Nav navbar>
+              <NavItem>
+                <NavLink className='nav-link' href='/home'>
+                  <i className='fa fa-home fa-lg' /> Home
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className='nav-link' href='/about'>
+                  <i className='fa fa-home fa-lg' /> About
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className='nav-link' href='/services'>
+                  <i className='fa fa-home fa-lg' /> Services
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className='nav-link' href='/contact'>
+                  <i className='fa fa-home fa-lg' /> Contact
+                </NavLink>
+              </NavItem>
+            </Nav>
+            <span>
+              <Button
+                className='primary-color text-white my-2 my-sm-0 mx-lg-4'
+                onClick={this.toggleModal}
+              >
+                Book Now
+              </Button>
+            </span>
+          </Collapse>
         </Navbar>
 
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
