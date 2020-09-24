@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Navigation from './Navigation';
+import Header from './Header';
 import Carousel from './Carousel';
 import ContactForm from './ContactForm';
 import DestinationList from './DestinationList';
@@ -11,7 +11,7 @@ import Footer from './Footer';
 function App() {
   return (
     <div>
-      <Navigation />
+      <Header />
       <Carousel />
       <ContactForm />
       <DestinationList />

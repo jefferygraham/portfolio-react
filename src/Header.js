@@ -41,38 +41,36 @@ class Navigation extends Component {
     return (
       <React.Fragment>
         <Navbar color='light' light expand='lg' fixed='top'>
-          <NavbarBrand href='/'>
-            <a className='navbar-brand ml-3 d-flex flex-row align-items-center'>
-              <img
-                src='/assets/images/travel-right-logo.svg'
-                width='65'
-                height='65'
-                alt='Travel Right Logo'
-              />
-              <h2 className='d-inline heading m-0 pl-2'>Travel Right</h2>
-            </a>
+          <NavbarBrand className='mr-auto' href='/'>
+            <img
+              src='/assets/images/travel-right-logo.svg'
+              width='65'
+              height='65'
+              alt='Travel Right Logo'
+            />
+            <h2 className='d-inline heading m-0 pl-2'>Travel Right</h2>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNav} />
           <Collapse isOpen={this.state.isNavOpen} navbar>
-            <Nav navbar>
+            <Nav navbar className='ml-auto'>
               <NavItem>
                 <NavLink className='nav-link' href='/home'>
-                  <i className='fa fa-home fa-lg' /> Home
+                  Home
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink className='nav-link' href='/about'>
-                  <i className='fa fa-home fa-lg' /> About
+                  About
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink className='nav-link' href='/services'>
-                  <i className='fa fa-home fa-lg' /> Services
+                  Services
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink className='nav-link' href='/contact'>
-                  <i className='fa fa-home fa-lg' /> Contact
+                  Contact
                 </NavLink>
               </NavItem>
             </Nav>
