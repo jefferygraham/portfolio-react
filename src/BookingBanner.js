@@ -1,19 +1,16 @@
 import React from 'react';
+import { Parallax } from 'react-parallax';
+import { Button } from 'reactstrap';
 
 function BookingBanner() {
   return (
-    <div
-      id='bookingBanner'
-      data-jarallax
-      data-speed='0.2'
-      className='jarallax py-5'
+    <Parallax
+      blur={0}
+      bgImage='/assets/images/booking-banner.jpg'
+      bgImageAlt='hand holding a map'
+      strength={200}
     >
-      <img
-        className='jarallax-img'
-        src='/assets/images/booking-banner.jpg'
-        alt=''
-      />
-      <div id='bookingBannerInfo' className='row'>
+      <div id='bookingBannerInfo' className='row my-5'>
         <div className='col-md-6 offset-md-3 text-center text-white'>
           <h2 className='display-4 heading'>
             Book Tours From The Comfort of Your Own Home
@@ -22,12 +19,11 @@ function BookingBanner() {
             Using our website, you can easily find and book any tour you want.
             Mobile users will definitely enjoy our app available on all devices.
           </p>
-          <a href='#' className='btn text-white color-primary'>
-            Book Now
-          </a>
+          <Button className='primary-color'>Book Now</Button>
         </div>
       </div>
-    </div>
+      <div />
+    </Parallax>
   );
 }
 
