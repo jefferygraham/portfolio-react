@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './Header';
-import Carousel from './Carousel';
+import Slider from './Slider';
 import ContactForm from './ContactForm';
 import DestinationList from './DestinationList';
 import BookingBanner from './BookingBanner';
@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Carousel />
+      <Slider />
       <ContactForm />
       <DestinationList />
       <BookingBanner />
