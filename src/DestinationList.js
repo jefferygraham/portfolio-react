@@ -48,7 +48,7 @@ class DestinationList extends Component {
         {/* <!-- CARD DECK --> */}
         <div className='row pt-5 text-center'>
           {destinations.map((destination) => (
-            <div className='col-4'>
+            <div key={destination.title} className='col-4'>
               <Card className='mb-3 border-0'>
                 <CardImg
                   top
