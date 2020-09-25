@@ -9,23 +9,30 @@ import {
 const items = [
   {
     src: '/assets/images/globe.jpg',
+    header: 'Travel Right',
     altText: 'Globe',
-    caption: 'Slide 1',
-  },
-  {
-    src: '/assets/images/plane.jpg',
-    altText: 'Slide 2',
-    caption: 'Slide 2',
+    caption: "If you're going to travel, you might as well Travel Right.",
   },
   {
     src: '/assets/images/train.jpg',
-    altText: 'Slide 3',
-    caption: 'Slide 3',
+    header: 'Land',
+    altText: 'Train',
+    caption:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident.',
   },
   {
     src: '/assets/images/cruise.jpg',
-    altText: 'Slide 3',
-    caption: 'Slide 3',
+    header: 'Sea',
+    altText: 'Deck of cruise ship',
+    caption:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident.',
+  },
+  {
+    src: '/assets/images/plane.jpg',
+    header: 'Air',
+    altText: 'Plane above the clouds',
+    caption:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident.',
   },
 ];
 
@@ -83,17 +90,17 @@ class Slider extends React.Component {
         >
           <img src={item.src} alt={item.altText} />
           <CarouselCaption
+            className='text-left'
             captionText={item.caption}
-            captionHeader={item.caption}
+            captionHeader={item.header}
           />
         </CarouselItem>
       );
     });
 
     return (
-      <div>
+      <div id='mainCarousel'>
         <Carousel
-          id='mainCarousel'
           activeIndex={activeIndex}
           next={this.next}
           previous={this.previous}
