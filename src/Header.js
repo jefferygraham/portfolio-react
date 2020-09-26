@@ -12,6 +12,7 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import { Control, LocalForm } from 'react-redux-form';
 
 class Navigation extends Component {
   constructor(props) {
@@ -35,6 +36,11 @@ class Navigation extends Component {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
     });
+  }
+
+  handleSubmit(values) {
+    console.log('Current state is: ' + JSON.stringify(values));
+    alert('Current state is: ' + JSON.stringify(values));
   }
 
   render() {
@@ -92,62 +98,102 @@ class Navigation extends Component {
             </h5>
           </ModalHeader>
           <ModalBody>
-            <form>
+            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <div className='form-row'>
                 <div className='form-group col-md-6'>
                   <label htmlFor='inputDeparture'>From</label>
-                  <select id='inputDeparture' className='form-control'>
+                  <Control.select
+                    model='.inputDeparture'
+                    id='inputDeparture'
+                    name='inputDeparture'
+                    className='form-control'
+                  >
                     <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
+                    <option value='departure1'>Departure1</option>
+                    <option value='departure2'>Departure2</option>
+                    <option value='departure3'>Departure3</option>
+                  </Control.select>
                 </div>
                 <div className='form-group col-md-6'>
                   <label htmlFor='inputDestination'>To</label>
-                  <select id='inputDestination' className='form-control'>
+                  <Control.select
+                    model='.inputDestination'
+                    id='inputDestination'
+                    name='inputDestination'
+                    className='form-control'
+                  >
                     <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
+                    <option value='destination1'>Destination1</option>
+                    <option value='destination2'>Destination2</option>
+                    <option value='destination3'>Destination3</option>
+                  </Control.select>
                 </div>
               </div>
               <div className='form-row'>
                 <div className='form-group col-md-6'>
                   <label htmlFor='adults'>Adults</label>
-                  <select id='adults' className='form-control'>
+                  <Control.select
+                    model='.adults'
+                    id='adults'
+                    name='adults'
+                    className='form-control'
+                  >
                     <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                  </Control.select>
                 </div>
                 <div className='form-group col-md-6'>
                   <label htmlFor='children'>Children</label>
-                  <select id='children' className='form-control'>
+                  <Control.select
+                    model='.children'
+                    id='children'
+                    name='children'
+                    className='form-control'
+                  >
                     <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                  </Control.select>
                 </div>
               </div>
               <div className='form-row'>
                 <div className='form-group col-md-6'>
                   <label htmlFor='travelclassName'>Travel className</label>
-                  <select id='travelclassName' className='form-control'>
+                  <Control.select
+                    model='.travelclassName'
+                    id='travelclassName'
+                    name='travelclassName'
+                    className='form-control'
+                  >
                     <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
+                    <option value='travelClass1'>TravelClass1</option>
+                    <option value='travelClass2'>TravelClass2</option>
+                    <option value='travelClass3'>TravelClass3</option>
+                  </Control.select>
                 </div>
                 <div className='form-group col-md-6'>
                   <label htmlFor='departureDate'>Departure Date</label>
-                  <input
+                  <Control.text
                     type='date'
                     className='form-control'
+                    model='.departureDate'
                     id='departureDate'
+                    name='departureDate'
                   />
                 </div>
               </div>
               <div className='form-group'>
                 <div className='custom-control custom-radio custom-control-inline'>
-                  <input
-                    type='radio'
+                  <Control.radio
+                    model='.flightType'
                     id='oneWay'
-                    name='oneWay'
+                    value='oneWay'
+                    name='flightType'
                     className='custom-control-input'
                   />
                   <label className='custom-control-label' htmlFor='oneWay'>
@@ -155,10 +201,11 @@ class Navigation extends Component {
                   </label>
                 </div>
                 <div className='custom-control custom-radio custom-control-inline'>
-                  <input
-                    type='radio'
+                  <Control.radio
+                    model='.flightType'
                     id='roundTrip'
-                    name='roundTrip'
+                    value='roundTrip'
+                    name='flightType'
                     className='custom-control-input'
                   />
                   <label className='custom-control-label' htmlFor='roundTrip'>
@@ -173,10 +220,10 @@ class Navigation extends Component {
               >
                 Cancel
               </button>
-              <button type='button' className='btn text-white color-primary'>
+              <Button type='submit' className='btn text-white color-primary'>
                 Search Now
-              </button>
-            </form>
+              </Button>
+            </LocalForm>
           </ModalBody>
         </Modal>
       </React.Fragment>
