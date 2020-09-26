@@ -5,13 +5,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css';
 import 'typeface-rubik';
 import 'typeface-old-standard-tt';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/configureStore';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const store = ConfigureStore();
+
 ReactDOM.render(
-  <React.Fragment>
-    <App />
-  </React.Fragment>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.css';
 import Header from './Header';
 import Slider from './Slider';
@@ -7,31 +9,28 @@ import DestinationList from './DestinationList';
 import BookingBanner from './BookingBanner';
 import ServicesList from './ServicesList';
 import Footer from './Footer';
-import { DESTINATIONS } from './shared/destinations.js';
-import { SLIDERIMAGES } from './shared/sliderImages.js';
-import { SERVICES } from './shared/services.js';
+
+const mapStateToProps = (state) => {
+  return {
+    destinations: state.destinations,
+    services: state.services,
+    sliderImages: state.sliderImages,
+  };
+};
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      destinations: DESTINATIONS,
-      sliderImages: SLIDERIMAGES,
-      services: SERVICES,
-    };
-  }
   render() {
     return (
       <div>
         <Header />
-        <Slider sliderImages={this.state.sliderImages} />
+        <Slider sliderImages={this.props.sliderImages} />
         <ContactForm />
-        <DestinationList destinations={this.state.destinations} />
+        <DestinationList destinations={this.props.destinations} />
         <BookingBanner />
-        <ServicesList services={this.state.services} />
+        <ServicesList services={this.props.services} />
         <Footer />
       </div>
     );
   }
 }
-export default App;
+export default withRouter(connect(mapStateToProps)(App));
