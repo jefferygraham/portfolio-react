@@ -6,35 +6,6 @@ import {
   CarouselIndicators,
   CarouselControl,
 } from 'reactstrap';
-const items = [
-  {
-    src: '/assets/images/globe.jpg',
-    header: 'Travel Right',
-    altText: 'Globe',
-    caption: "If you're going to travel, you might as well Travel Right.",
-  },
-  {
-    src: '/assets/images/train.jpg',
-    header: 'Land',
-    altText: 'Train',
-    caption:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident.',
-  },
-  {
-    src: '/assets/images/cruise.jpg',
-    header: 'Sea',
-    altText: 'Deck of cruise ship',
-    caption:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident.',
-  },
-  {
-    src: '/assets/images/plane.jpg',
-    header: 'Air',
-    altText: 'Plane above the clouds',
-    caption:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident.',
-  },
-];
 
 class Slider extends React.Component {
   constructor(props) {
@@ -58,7 +29,7 @@ class Slider extends React.Component {
   next() {
     if (this.animating) return;
     const nextIndex =
-      this.state.activeIndex === items.length - 1
+      this.state.activeIndex === this.props.sliderImages.length - 1
         ? 0
         : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
@@ -68,7 +39,7 @@ class Slider extends React.Component {
     if (this.animating) return;
     const nextIndex =
       this.state.activeIndex === 0
-        ? items.length - 1
+        ? this.props.sliderImages.length - 1
         : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
@@ -80,19 +51,18 @@ class Slider extends React.Component {
 
   render() {
     const { activeIndex } = this.state;
-
-    const slides = items.map((item) => {
+    const slides = this.props.sliderImages.map((image) => {
       return (
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
-          key={item.src}
+          key={image.id}
         >
-          <img src={item.src} alt={item.altText} />
+          <img src={image.src} alt={image.altText} />
           <CarouselCaption
             className='text-left'
-            captionText={item.caption}
-            captionHeader={item.header}
+            captionText={image.caption}
+            captionHeader={image.header}
           />
         </CarouselItem>
       );
@@ -106,7 +76,7 @@ class Slider extends React.Component {
           previous={this.previous}
         >
           <CarouselIndicators
-            items={items}
+            items={this.props.sliderImages}
             activeIndex={activeIndex}
             onClickHandler={this.goToIndex}
           />
