@@ -1,8 +1,16 @@
-import { createStore } from 'redux';
-import { Reducer, initialState } from './reducer';
+import { createStore, combineReducers } from 'redux';
+import { Destinations } from './destinations';
+import { Services } from './services';
+import { SliderImages } from './sliderImages';
 
 export const ConfigureStore = () => {
-  const store = createStore(Reducer, initialState);
+  const store = createStore(
+    combineReducers({
+      destinations: Destinations,
+      services: Services,
+      sliderImages: SliderImages,
+    })
+  );
 
   return store;
 };

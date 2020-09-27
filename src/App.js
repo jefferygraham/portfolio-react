@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
-import Header from './Header';
-import Slider from './Slider';
-import ContactForm from './ContactForm';
-import DestinationList from './DestinationList';
-import BookingBanner from './BookingBanner';
-import ServicesList from './ServicesList';
-import Footer from './Footer';
+import Header from './components/Header';
+import Slider from './components/Slider';
+import ContactForm from './components/ContactForm';
+import DestinationList from './components/DestinationList';
+import BookingBanner from './components/BookingBanner';
+import ServicesList from './components/ServicesList';
+import Footer from './components/Footer';
 
 const mapStateToProps = (state) => {
   return {
