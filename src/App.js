@@ -9,7 +9,7 @@ import DestinationList from './components/DestinationList';
 import BookingBanner from './components/BookingBanner';
 import ServicesList from './components/ServicesList';
 import Footer from './components/Footer';
-import { fetchDestinations } from './redux/ActionCreators';
+import { fetchDestinations, fetchSliderImages } from './redux/ActionCreators';
 
 const mapStateToProps = (state) => {
   return {
@@ -21,18 +21,24 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   fetchDestinations: () => fetchDestinations(),
+  fetchSliderImages: () => fetchSliderImages(),
 };
 
 class App extends Component {
   componentDidMount() {
     this.props.fetchDestinations();
+    this.props.fetchSliderImages();
   }
 
   render() {
     return (
       <div>
         <Header />
-        <Slider sliderImages={this.props.sliderImages} />
+        <Slider
+          sliderImages={this.props.sliderImages.sliderImages}
+          isLoading={this.props.sliderImages.isLoading}
+          errMsg={this.props.sliderImages.errMsg}
+        />
         <ContactForm />
         <DestinationList
           destinations={this.props.destinations.destinations}

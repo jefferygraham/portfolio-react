@@ -1,4 +1,4 @@
-export const SLIDERIMAGES = [
+export const SLIDER_IMAGES = [
   {
     id: 0,
     src: '/assets/images/globe.jpg',

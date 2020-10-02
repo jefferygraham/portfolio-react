@@ -6,6 +6,7 @@ import {
   CarouselIndicators,
   CarouselControl,
 } from 'reactstrap';
+import { Loading } from './LoadingComponent';
 
 class Slider extends React.Component {
   constructor(props) {
@@ -50,50 +51,73 @@ class Slider extends React.Component {
   }
 
   render() {
-    const { activeIndex } = this.state;
-    const slides = this.props.sliderImages.map((image) => {
+    if (this.props.isLoading) {
       return (
-        <CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={image.id}
-        >
-          <img src={image.src} alt={image.altText} />
-          <CarouselCaption
-            className='text-left'
-            captionText={image.caption}
-            captionHeader={image.header}
-          />
-        </CarouselItem>
+        <div className='container'>
+          <div className='row'>
+            <Loading />
+          </div>
+        </div>
       );
-    });
+    }
+    if (this.props.errMess) {
+      return (
+        <div className='container'>
+          <div className='row'>
+            <div className='col'>
+              <h4>{this.props.errMess}</h4>
+            </div>
+          </div>
+        </div>
+      );
+    }
 
-    return (
-      <div id='mainCarousel'>
-        <Carousel
-          activeIndex={activeIndex}
-          next={this.next}
-          previous={this.previous}
-        >
-          <CarouselIndicators
-            items={this.props.sliderImages}
+    if (this.props.sliderImages) {
+      const { activeIndex } = this.state;
+      const slides = this.props.sliderImages.map((image) => {
+        return (
+          <CarouselItem
+            onExiting={this.onExiting}
+            onExited={this.onExited}
+            key={image.id}
+          >
+            <img src={image.src} alt={image.altText} />
+            <CarouselCaption
+              className='text-left'
+              captionText={image.caption}
+              captionHeader={image.header}
+            />
+          </CarouselItem>
+        );
+      });
+
+      return (
+        <div id='mainCarousel'>
+          <Carousel
             activeIndex={activeIndex}
-            onClickHandler={this.goToIndex}
-          />
-          {slides}
-          <CarouselControl
-            direction='prev'
-            directionText='Previous'
-            onClickHandler={this.previous}
-          />
-          <CarouselControl
-            direction='next'
-            directionText='Next'
-            onClickHandler={this.next}
-          />
-        </Carousel>
-      </div>
-    );
+            next={this.next}
+            previous={this.previous}
+          >
+            <CarouselIndicators
+              items={this.props.sliderImages}
+              activeIndex={activeIndex}
+              onClickHandler={this.goToIndex}
+            />
+            {slides}
+            <CarouselControl
+              direction='prev'
+              directionText='Previous'
+              onClickHandler={this.previous}
+            />
+            <CarouselControl
+              direction='next'
+              directionText='Next'
+              onClickHandler={this.next}
+            />
+          </Carousel>
+        </div>
+      );
+    }
   }
 }
 
