@@ -9,6 +9,7 @@ import DestinationList from './components/DestinationList';
 import BookingBanner from './components/BookingBanner';
 import ServicesList from './components/ServicesList';
 import Footer from './components/Footer';
+import { fetchDestinations } from './redux/ActionCreators';
 
 const mapStateToProps = (state) => {
   return {
@@ -18,14 +19,26 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = {
+  fetchDestinations: () => fetchDestinations(),
+};
+
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchDestinations();
+  }
+
   render() {
     return (
       <div>
         <Header />
         <Slider sliderImages={this.props.sliderImages} />
         <ContactForm />
-        <DestinationList destinations={this.props.destinations} />
+        <DestinationList
+          destinations={this.props.destinations.destinations}
+          isLoading={this.props.destinations.isLoading}
+          errMsg={this.props.destinations.errMsg}
+        />
         <BookingBanner />
         <ServicesList services={this.props.services} />
         <Footer />
@@ -33,4 +46,4 @@ class App extends Component {
     );
   }
 }
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
