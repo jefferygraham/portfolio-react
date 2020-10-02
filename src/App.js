@@ -9,7 +9,11 @@ import DestinationList from './components/DestinationList';
 import BookingBanner from './components/BookingBanner';
 import ServicesList from './components/ServicesList';
 import Footer from './components/Footer';
-import { fetchDestinations, fetchSliderImages } from './redux/ActionCreators';
+import {
+  fetchDestinations,
+  fetchSliderImages,
+  fetchServices,
+} from './redux/ActionCreators';
 
 const mapStateToProps = (state) => {
   return {
@@ -22,12 +26,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   fetchDestinations: () => fetchDestinations(),
   fetchSliderImages: () => fetchSliderImages(),
+  fetchServices: () => fetchServices(),
 };
 
 class App extends Component {
   componentDidMount() {
     this.props.fetchDestinations();
     this.props.fetchSliderImages();
+    this.props.fetchServices();
   }
 
   render() {
@@ -46,7 +52,11 @@ class App extends Component {
           errMsg={this.props.destinations.errMsg}
         />
         <BookingBanner />
-        <ServicesList services={this.props.services} />
+        <ServicesList
+          services={this.props.services.services}
+          isLoading={this.props.services.isLoading}
+          errMsg={this.props.services.errMsg}
+        />
         <Footer />
       </div>
     );

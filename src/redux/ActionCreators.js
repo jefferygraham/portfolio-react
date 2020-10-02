@@ -1,6 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 import { DESTINATIONS } from '../shared/destinations';
 import { SLIDER_IMAGES } from '../shared/sliderImages';
+import { SERVICES } from '../shared/services';
 
 export const fetchDestinations = () => (dispatch) => {
   dispatch(destinationsLoading());
@@ -43,5 +44,27 @@ export const addSliderImages = (sliderImages) => ({
 
 export const sliderImagesFalied = (errMsg) => ({
   type: ActionTypes.SLIDER_IMAGES_FAILED,
+  payload: errMsg,
+});
+
+export const fetchServices = () => (dispatch) => {
+  dispatch(servicesLoading());
+
+  setTimeout(() => {
+    dispatch(addServices(SERVICES));
+  }, 2000);
+};
+
+export const servicesLoading = () => ({
+  type: ActionTypes.SERVICES_LOADING,
+});
+
+export const addServices = (services) => ({
+  type: ActionTypes.ADD_SERVICES,
+  payload: services,
+});
+
+export const servicesFailed = (errMsg) => ({
+  type: ActionTypes.SERVICES_FAILED,
   payload: errMsg,
 });
