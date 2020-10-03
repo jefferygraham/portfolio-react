@@ -11,6 +11,17 @@ const ServicesList = (props) => {
       </div>
     );
   }
+   if (props.errMsg) {
+     return (
+       <div className='container'>
+         <div className='row'>
+           <div className='col'>
+             <h4>{props.errMsg}</h4>
+           </div>
+         </div>
+       </div>
+     );
+   }
   if (props.services) {
     return (
       <div id='services' className='container-fluid bg-light py-4'>

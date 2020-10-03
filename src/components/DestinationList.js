@@ -13,12 +13,12 @@ const DestinationList = (props) => {
       </div>
     );
   }
-  if (props.errMess) {
+  if (props.errMsg) {
     return (
       <div className='container'>
         <div className='row'>
           <div className='col'>
-            <h4>{props.errMess}</h4>
+            <h4>{props.errMsg}</h4>
           </div>
         </div>
       </div>

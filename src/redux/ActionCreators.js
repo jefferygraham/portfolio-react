@@ -5,8 +5,26 @@ export const fetchDestinations = () => (dispatch) => {
   dispatch(destinationsLoading());
 
   return fetch(baseUrl + 'destinations')
-    .then((res) => res.json())
-    .then((destinations) => dispatch(addDestinations(destinations)));
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          const error = new Error(
+            `Error ${response.status}: ${response.statusText}`
+          );
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        const errMsg = new Error(error.message);
+        throw errMsg;
+      }
+    )
+    .then((response) => response.json())
+    .then((destinations) => dispatch(addDestinations(destinations)))
+    .catch((error) => dispatch(destinationsFailed(error.message)));
 };
 
 export const destinationsLoading = () => ({
@@ -27,8 +45,26 @@ export const fetchSliderImages = () => (dispatch) => {
   dispatch(sliderImagesLoading());
 
   return fetch(baseUrl + 'slider_images')
-    .then((res) => res.json())
-    .then((sliderImages) => dispatch(addSliderImages(sliderImages)));
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          const error = new Error(
+            `Error ${response.status}: ${response.statusText}`
+          );
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        const errMsg = new Error(error.message);
+        throw errMsg;
+      }
+    )
+    .then((response) => response.json())
+    .then((sliderImages) => dispatch(addSliderImages(sliderImages)))
+    .catch((error) => dispatch(sliderImagesFalied(error.message)));
 };
 
 export const sliderImagesLoading = () => ({
@@ -49,8 +85,25 @@ export const fetchServices = () => (dispatch) => {
   dispatch(servicesLoading());
 
   return fetch(baseUrl + 'services')
-    .then((res) => res.json())
-    .then((services) => dispatch(addServices(services)));
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          const error = new Error(
+            `Error ${response.status}: ${response.statusText}`
+          );
+          error.response = response;
+        }
+      },
+      (error) => {
+        const errMsg = new Error(error.message);
+        throw errMsg;
+      }
+    )
+    .then((response) => response.json())
+    .then((services) => dispatch(addServices(services)))
+    .catch((error) => dispatch(servicesFailed(error.message)));
 };
 
 export const servicesLoading = () => ({

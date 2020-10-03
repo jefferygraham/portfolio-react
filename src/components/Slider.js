@@ -61,12 +61,12 @@ class Slider extends React.Component {
         </div>
       );
     }
-    if (this.props.errMess) {
+    if (this.props.errMsg) {
       return (
         <div className='container'>
           <div className='row'>
             <div className='col'>
-              <h4>{this.props.errMess}</h4>
+              <h4>{this.props.errMsg}</h4>
             </div>
           </div>
         </div>
