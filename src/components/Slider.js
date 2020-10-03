@@ -7,6 +7,7 @@ import {
   CarouselControl,
 } from 'reactstrap';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 class Slider extends React.Component {
   constructor(props) {
@@ -81,7 +82,7 @@ class Slider extends React.Component {
             onExited={this.onExited}
             key={image.id}
           >
-            <img src={image.src} alt={image.altText} />
+            <img src={baseUrl + image.src} alt={image.altText} />
             <CarouselCaption
               className='text-left'
               captionText={image.caption}

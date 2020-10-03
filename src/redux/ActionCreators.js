@@ -1,14 +1,12 @@
 import * as ActionTypes from './ActionTypes';
-import { DESTINATIONS } from '../shared/destinations';
-import { SLIDER_IMAGES } from '../shared/sliderImages';
-import { SERVICES } from '../shared/services';
+import { baseUrl } from '../shared/baseUrl';
 
 export const fetchDestinations = () => (dispatch) => {
   dispatch(destinationsLoading());
 
-  setTimeout(() => {
-    dispatch(addDestinations(DESTINATIONS));
-  }, 2000);
+  return fetch(baseUrl + 'destinations')
+    .then((res) => res.json())
+    .then((destinations) => dispatch(addDestinations(destinations)));
 };
 
 export const destinationsLoading = () => ({
@@ -28,9 +26,9 @@ export const addDestinations = (destinations) => ({
 export const fetchSliderImages = () => (dispatch) => {
   dispatch(sliderImagesLoading());
 
-  setTimeout(() => {
-    dispatch(addSliderImages(SLIDER_IMAGES));
-  }, 2000);
+  return fetch(baseUrl + 'slider_images')
+    .then((res) => res.json())
+    .then((sliderImages) => dispatch(addSliderImages(sliderImages)));
 };
 
 export const sliderImagesLoading = () => ({
@@ -50,9 +48,9 @@ export const sliderImagesFalied = (errMsg) => ({
 export const fetchServices = () => (dispatch) => {
   dispatch(servicesLoading());
 
-  setTimeout(() => {
-    dispatch(addServices(SERVICES));
-  }, 2000);
+  return fetch(baseUrl + 'services')
+    .then((res) => res.json())
+    .then((services) => dispatch(addServices(services)));
 };
 
 export const servicesLoading = () => ({

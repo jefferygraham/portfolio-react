@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardImg, CardTitle } from 'reactstrap';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 const DestinationList = (props) => {
   if (props.isLoading) {
@@ -42,7 +43,7 @@ const DestinationList = (props) => {
                   top
                   className='shadow-lg'
                   width='100%'
-                  src={destination.src}
+                  src={baseUrl + destination.src}
                   alt={destination.altText}
                 />
                 <CardBody>
