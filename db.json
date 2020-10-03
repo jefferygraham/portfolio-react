@@ -1,19 +1,91 @@
 {
-  "posts": [
+  "slider_images": [
+    {
+      "id": 0,
+      "src": "assets/images/globe.jpg",
+      "header": "Travel Right",
+      "altText": "Globe",
+      "caption": "If you're going to travel, you might as well Travel Right."
+    },
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "src": "assets/images/train.jpg",
+      "header": "Land",
+      "altText": "Train",
+      "caption": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident."
+    },
+    {
+      "id": 2,
+      "src": "assets/images/cruise.jpg",
+      "header": "Sea",
+      "altText": "Deck of cruise ship",
+      "caption": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident."
+    },
+    {
+      "id": 3,
+      "src": "assets/images/plane.jpg",
+      "header": "Air",
+      "altText": "Plane above the clouds",
+      "caption": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo provident."
     }
   ],
-  "comments": [
+  "destinations": [
+    {
+      "id": 0,
+      "title": "Paris",
+      "src": "assets/images/paris.jpg",
+      "altText": "Paris"
+    },
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "Thailand",
+      "src": "assets/images/thailand.jpg",
+      "altText": "Thailand"
+    },
+    {
+      "id": 2,
+      "title": "Greece",
+      "src": "assets/images/greece.jpg",
+      "altText": "Greece"
+    },
+    {
+      "id": 3,
+      "title": "Australia",
+      "src": "assets/images/australia.jpg",
+      "altText": "Paris"
+    },
+    {
+      "id": 4,
+      "title": "Cape Town",
+      "src": "assets/images/cape-town.jpg",
+      "altText": "Cape Town"
+    },
+    {
+      "id": 5,
+      "title": "Rome",
+      "src": "assets/images/rome.jpg",
+      "altText": "Rome"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "services": [
+    {
+      "id": 0,
+      "heading": "Ticketing",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, explicabo.",
+      "faIcon": "fa fa-plane fa-2x"
+    },
+    {
+      "id": 1,
+      "heading": "Tour Guides",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, explicabo.",
+      "faIcon": "fa fa-thumbs-o-up fa-2x"
+    },
+    {
+      "id": 2,
+      "heading": "Hotel Booking",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, explicabo.",
+      "faIcon": "fa fa-bed fa-2x"
+    }
+  ],
+  "contacts": []
 }
