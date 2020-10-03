@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardBody, CardImg, CardTitle } from 'reactstrap';
+import { FadeTransform } from 'react-animation-components';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -38,18 +39,25 @@ const DestinationList = (props) => {
         <div className='row pt-5 text-center'>
           {props.destinations.map((destination) => (
             <div key={destination.id} className='col-4'>
-              <Card className='mb-3 border-0'>
-                <CardImg
-                  top
-                  className='shadow-lg'
-                  width='100%'
-                  src={baseUrl + destination.src}
-                  alt={destination.altText}
-                />
-                <CardBody>
-                  <CardTitle>{destination.title}</CardTitle>
-                </CardBody>
-              </Card>
+              <FadeTransform
+                in
+                transformProps={{
+                  exitTransform: 'scale(0.5) translateY(50%)',
+                }}
+              >
+                <Card className='mb-3 border-0'>
+                  <CardImg
+                    top
+                    className='shadow-lg'
+                    width='100%'
+                    src={baseUrl + destination.src}
+                    alt={destination.altText}
+                  />
+                  <CardBody>
+                    <CardTitle>{destination.title}</CardTitle>
+                  </CardBody>
+                </Card>
+              </FadeTransform>
             </div>
           ))}
         </div>

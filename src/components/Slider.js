@@ -6,6 +6,7 @@ import {
   CarouselIndicators,
   CarouselControl,
 } from 'reactstrap';
+import { FadeTransform } from 'react-animation-components';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -94,28 +95,35 @@ class Slider extends React.Component {
 
       return (
         <div id='mainCarousel'>
-          <Carousel
-            activeIndex={activeIndex}
-            next={this.next}
-            previous={this.previous}
+          <FadeTransform
+            in
+            transformProps={{
+              exitTransform: 'scale(0.5) translateY(50%)',
+            }}
           >
-            <CarouselIndicators
-              items={this.props.sliderImages}
+            <Carousel
               activeIndex={activeIndex}
-              onClickHandler={this.goToIndex}
-            />
-            {slides}
-            <CarouselControl
-              direction='prev'
-              directionText='Previous'
-              onClickHandler={this.previous}
-            />
-            <CarouselControl
-              direction='next'
-              directionText='Next'
-              onClickHandler={this.next}
-            />
-          </Carousel>
+              next={this.next}
+              previous={this.previous}
+            >
+              <CarouselIndicators
+                items={this.props.sliderImages}
+                activeIndex={activeIndex}
+                onClickHandler={this.goToIndex}
+              />
+              {slides}
+              <CarouselControl
+                direction='prev'
+                directionText='Previous'
+                onClickHandler={this.previous}
+              />
+              <CarouselControl
+                direction='next'
+                directionText='Next'
+                onClickHandler={this.next}
+              />
+            </Carousel>
+          </FadeTransform>
         </div>
       );
     }
